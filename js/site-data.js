@@ -38,6 +38,30 @@ window.siteData = {
     "正在学的新东西",
   ],
 
+  songs: [
+    {
+      title: "Dust and Ashes",
+      artist: "林俊杰",
+      file: "songs/Dust_and_Ashes.mp3",
+      cover: "songs/cover/Dust_and_Ashes.jpg",
+      accent: "#8b7cff",
+    },
+    {
+      title: "Lose Control",
+      artist: "林俊杰",
+      file: "songs/Lose_Control.mp3",
+      cover: "songs/cover/Lose_Control.jpg",
+      accent: "#2ee6c8",
+    },
+    {
+      title: "Obsession",
+      artist: "林俊杰",
+      file: "songs/Obsession.mp3",
+      cover: "songs/cover/Obsession.jpg",
+      accent: "#ff8296",
+    },
+  ],
+
   projects: [
     {
       title: "我的个人网站",

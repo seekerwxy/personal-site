@@ -115,6 +115,91 @@
       .join("");
   }
 
+  /* ---------- 常听歌曲 ---------- */
+  function renderSongs() {
+    const list = $("#song-list");
+    if (!list) return;
+    list.innerHTML = (data.songs || [])
+      .map(
+        (song) =>
+          '<button class="song-card" type="button" aria-pressed="false" data-src="' +
+          escapeAttr(song.file) +
+          '" style="--accent:' +
+          escapeAttr(song.accent || "#3de2ff") +
+          '">' +
+          '<span class="song-card__cover">' +
+          '<img src="' +
+          escapeAttr(song.cover) +
+          '" alt="' +
+          escapeAttr(song.title) +
+          ' 封面" loading="lazy">' +
+          '<span class="song-card__icon" aria-hidden="true"></span></span>' +
+          '<span class="song-card__body">' +
+          '<span class="song-card__title">' +
+          escapeHtml(song.title) +
+          "</span>" +
+          '<span class="song-card__artist">' +
+          escapeHtml(song.artist || "") +
+          "</span></span></button>"
+      )
+      .join("");
+    initSongPlayer();
+  }
+
+  function initSongPlayer() {
+    const cards = $$(".song-card");
+    if (cards.length === 0) return;
+
+    const audio = new Audio();
+    audio.preload = "none";
+    let currentCard = null;
+    let currentSrc = "";
+
+    function resetCard(card) {
+      if (!card) return;
+      card.classList.remove("is-playing");
+      card.setAttribute("aria-pressed", "false");
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const src = card.dataset.src;
+        if (!src) return;
+
+        if (currentCard === card && !audio.paused) {
+          audio.pause();
+          resetCard(card);
+          currentCard = null;
+          return;
+        }
+
+        if (currentCard && currentCard !== card) resetCard(currentCard);
+        currentCard = card;
+
+        if (src !== currentSrc) {
+          audio.src = src;
+          currentSrc = src;
+        }
+
+        card.classList.add("is-playing");
+        card.setAttribute("aria-pressed", "true");
+
+        const promise = audio.play();
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {
+            resetCard(card);
+            currentCard = null;
+          });
+        }
+      });
+    });
+
+    audio.addEventListener("ended", () => {
+      resetCard(currentCard);
+      currentCard = null;
+    });
+  }
+
   /* ---------- 作品 ---------- */
   function renderProjects() {
     const grid = $("#projects-grid");
@@ -445,6 +530,7 @@
     renderIdentity();
     renderStats();
     renderSkills();
+    renderSongs();
     renderProjects();
     renderTimeline();
     renderFooter();
