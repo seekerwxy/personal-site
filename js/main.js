@@ -209,8 +209,13 @@
         const tags = (project.tags || [])
           .map((tag) => '<span class="tag">' + escapeHtml(tag) + "</span>")
           .join("");
+        const isLink = Boolean(project.url);
+        const openTag = isLink
+          ? '<a class="project" href="' + escapeAttr(project.url) + '" target="_blank" rel="noopener" data-reveal style="--reveal-delay:' + index * 0.08 + 's">'
+          : '<article class="project" data-reveal style="--reveal-delay:' + index * 0.08 + 's">';
+        const closeTag = isLink ? "</a>" : "</article>";
         return (
-          '<article class="project" data-reveal style="--reveal-delay:' + index * 0.08 + 's">' +
+          openTag +
           '<div class="project__preview" style="--accent:' + escapeAttr(project.accent || "#3de2ff") + '" aria-hidden="true">' +
           preview +
           "</div>" +
@@ -218,7 +223,8 @@
           '<div class="project__top"><h3 class="project__title">' + escapeHtml(project.title) + "</h3>" +
           '<span class="project__year">' + escapeHtml(project.year || "") + "</span></div>" +
           '<p class="project__desc">' + escapeHtml(project.description || "") + "</p>" +
-          '<div class="project__tags">' + tags + "</div></div></article>"
+          '<div class="project__tags">' + tags + "</div></div>" +
+          closeTag
         );
       })
       .join("");
@@ -234,7 +240,7 @@
       return (
         '<div class="preview preview--design">' +
         swatches +
-        '<span class="type">Aa 王煊怡</span>' +
+        '<span class="type">Aa seekerwxy</span>' +
         '<span class="type-line"></span><span class="type-line"></span></div>'
       );
     }
