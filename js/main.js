@@ -434,52 +434,6 @@
     });
   }
 
-  /* ---------- 表单 ---------- */
-  function initForm() {
-    const form = $("#contact-form");
-    if (!form) return;
-
-    const fields = {
-      name: { input: $("#contact-name"), valid: (v) => v.trim().length > 0, message: "请写下你的称呼" },
-      email: {
-        input: $("#contact-email"),
-        valid: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
-        message: "请输入有效的邮箱地址",
-      },
-      message: { input: $("#contact-message"), valid: (v) => v.trim().length >= 5, message: "至少写 5 个字吧" },
-    };
-
-    Object.values(fields).forEach((field) => {
-      field.input.addEventListener("input", () => {
-        const row = field.input.closest(".form-row");
-        if (row) row.classList.remove("has-error");
-      });
-    });
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      let valid = true;
-
-      Object.values(fields).forEach((field) => {
-        const row = field.input.closest(".form-row");
-        const error = row ? row.querySelector(".error-text") : null;
-        const ok = field.valid(field.input.value);
-        if (row) row.classList.toggle("has-error", !ok);
-        if (error) error.textContent = ok ? "" : field.message;
-        if (!ok) valid = false;
-      });
-
-      if (!valid) return;
-
-      const success = $("#form-success");
-      const name = fields.name.input.value.trim();
-      success.textContent = "收到，" + name + "。谢谢你留下消息。";
-      success.classList.add("is-visible");
-      form.reset();
-      window.setTimeout(() => success.classList.remove("is-visible"), 6000);
-    });
-  }
-
   /* ---------- 页脚年份 ---------- */
   function renderFooter() {
     const year = $("#year");
@@ -497,7 +451,6 @@
     initTypewriter();
     initStarfield();
     initNav();
-    initForm();
     initReveal();
     initTilt();
   }

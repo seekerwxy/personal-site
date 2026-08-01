@@ -160,29 +160,19 @@
         </div>
         <div class="contact__grid">
           <div class="contact__info" data-reveal>
-            <p id="contact-lead">如果你也想聊聊代码、数学、科学，或者推荐一首JJ的歌，可以留言。</p>
+            <p id="contact-lead">如果你也想聊聊代码、数学、科学，或者推荐一首JJ的歌，可以直接发邮件给我。</p>
             <div class="contact__list" id="social-list"></div>
           </div>
 
-          <form class="form-panel" id="contact-form" data-reveal novalidate>
-            <div class="form-row">
-              <label for="contact-name">你的称呼</label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="怎么称呼你">
-              <p class="error-text" data-error-for="contact-name"></p>
-            </div>
-            <div class="form-row">
-              <label for="contact-email">邮箱</label>
-              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="name@example.com">
-              <p class="error-text" data-error-for="contact-email"></p>
-            </div>
-            <div class="form-row">
-              <label for="contact-message">想聊什么</label>
-              <textarea id="contact-message" name="message" rows="5" placeholder="简单说几句就好"></textarea>
-              <p class="error-text" data-error-for="contact-message"></p>
-            </div>
-            <button class="btn btn--primary btn--block" type="submit">发送消息 <span aria-hidden="true">→</span></button>
-            <p class="form-success" id="form-success" role="status"></p>
-          </form>
+          <div class="form-panel contact__mail" data-reveal>
+            <p class="contact__mail-label">邮箱</p>
+            <p class="contact__mail-address">
+              <a href="mailto:wangxuanyi1211@qq.com">wangxuanyi1211@qq.com</a>
+            </p>
+            <a class="btn btn--primary btn--block" href="mailto:wangxuanyi1211@qq.com">
+              写邮件给我 <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
