@@ -9,7 +9,7 @@ window.siteData = {
     roles: ["初中生", "代码爱好者", "数学科学爱好者", "骑行玩家", "JJ 林俊杰乐迷"],
     lead: "无聊时写写代码，平时喜欢数学、科学、骑行，还有耳机里的林俊杰。",
     bio: [
-      "你好，我是Seeker wxy，来自浙江的初中生。无聊的时候会写点代码，虽然还在慢慢学，但很喜欢那种把想法变成页面的感觉。",
+      "你好，我是 Seeker wxy，来自浙江的初中生。无聊的时候会写点代码，虽然还在慢慢学，但很喜欢那种把想法变成页面的感觉。",
       "我也热爱数学和科学，虽然不算很擅长，但愿意一直琢磨；休息时喜欢骑车吹风，或者听听喜欢的歌。",
     ],
     location: "浙江温州",
@@ -62,7 +62,7 @@ window.siteData = {
     },
   ],
 
-  //design色块、dashboard柱状图、audio音波、terminal终端文字
+  // design 色块、dashboard 柱状图、audio 音波、terminal 终端文字
   projects: [
     {
       title: "班级纪念网站",
@@ -75,11 +75,11 @@ window.siteData = {
       swatches: ["#3de2ff", "#2ee6c8", "#8b7cff", "#b8f36d"],
     },
     {
-      title: 词网",
+      title: "词网",
       url: "https://wordnetwork.pages.dev",
       year: "2026",
       type: "dashboard",
-      description:"以网络形式展现英语单词,持续更新中",
+      description: "以网络形式展现英语单词，持续更新中",
       tags: ["HTML", "CSS", "JavaScript", "English"],
       accent: "#3de2ff",
       swatches: ["#3de2ff", "#2ee6c8", "#8b7cff", "#b8f36d"],
